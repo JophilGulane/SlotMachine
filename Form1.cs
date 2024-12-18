@@ -43,6 +43,7 @@ namespace SlotMachine
             // Get the stake from the input box
             if (int.TryParse(txtStake.Text, out int stake) && stake > 0 && stake <= slotMachine.Balance)
             {
+                
 
                 slotMachine.Stake = stake;
                 slotMachine.UpdateBalance(-stake);
@@ -63,9 +64,11 @@ namespace SlotMachine
         private void timerSpin_Tick(object sender, EventArgs e)
         {
             slotMachine.Spin();			// Spin the reels
+            btnSpin.BackgroundImage = SlotMachine.Assets.Assets.slot_machine3;
 
             if (DateTime.Now.Second % 2 == 0) 	// Stop spinning after 2 seconds
             {
+                btnSpin.BackgroundImage = SlotMachine.Assets.Assets.slot_machine2;
                 timerSpin.Stop();
                 btnSpin.Enabled = true;
 
