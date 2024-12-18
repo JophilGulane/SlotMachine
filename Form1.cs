@@ -8,10 +8,14 @@ namespace SlotMachine
     {
         private Slot slotMachine;
         private System.Windows.Forms.Timer timerSpin = new System.Windows.Forms.Timer();
+        private AudioManager audioManager;
 
         public Form1()
         {
             InitializeComponent();
+            audioManager = new AudioManager();
+
+            audioManager.PlayBackgroundMusic(@"SoundFX/tmpBGEffect.mp3");
 
             // Initialize PictureBoxes for reels
             PictureBox[] pictureBoxes = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3 };
@@ -44,7 +48,7 @@ namespace SlotMachine
                 slotMachine.Stake = stake;
                 slotMachine.UpdateBalance(-stake);
                 lblBalance.Text = "Balance: P" + slotMachine.Balance;
-
+                audioManager.PlaySoundEffect(@"SoundFX/tmpLeverEffect.mp3");
                 btnSpin.Enabled = false; 	// Disable the button during spin
                 lblResult.Text = "";  	// Clear any previous result
                 timerSpin.Interval = 200; // Set the tick interval (in milliseconds)
