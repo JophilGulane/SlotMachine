@@ -12,7 +12,10 @@ namespace SlotMachine
         public Form1()
         {
             InitializeComponent();
+            
             audioManager.PlayBackgroundMusic(@"SoundFX/tmpBG.mp3");
+            audioManager.SetBackgroundMusicVolume(0.25f);
+
             // Initialize PictureBoxes for reels
             PictureBox[] pictureBoxes = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3 };
 
