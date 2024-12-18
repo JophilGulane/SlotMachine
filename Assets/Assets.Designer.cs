@@ -83,9 +83,9 @@ namespace SlotMachine.Assets {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap slot_machine4_removebg_preview {
+        internal static System.Drawing.Bitmap slot_machine4 {
             get {
-                object obj = ResourceManager.GetObject("slot_machine4_removebg_preview", resourceCulture);
+                object obj = ResourceManager.GetObject("slot-machine4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,5 +1,7 @@
 ﻿namespace SlotMachine
 {
+
+
     partial class Form1
     {
         /// <summary>
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -45,32 +48,32 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(510, 192);
+            pictureBox1.Location = new Point(536, 238);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(86, 175);
+            pictureBox1.Size = new Size(82, 80);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(299, 192);
+            pictureBox2.Location = new Point(328, 238);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(89, 175);
+            pictureBox2.Size = new Size(85, 80);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(404, 192);
+            pictureBox3.Location = new Point(433, 238);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(91, 175);
+            pictureBox3.Size = new Size(81, 80);
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(34, 113);
+            lblBalance.Location = new Point(47, 217);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(50, 20);
             lblBalance.TabIndex = 3;
@@ -79,7 +82,7 @@
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(676, 166);
+            lblResult.Location = new Point(442, 152);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(50, 20);
             lblResult.TabIndex = 5;
@@ -87,17 +90,18 @@
             // 
             // txtStake
             // 
-            txtStake.Location = new Point(12, 166);
+            txtStake.Location = new Point(38, 258);
             txtStake.Name = "txtStake";
             txtStake.Size = new Size(85, 27);
             txtStake.TabIndex = 6;
             // 
             // pictureBox4
             // 
+            pictureBox4.BackColor = Color.Transparent;
             pictureBox4.BackgroundImage = Assets.Assets.slot_machine4;
-            pictureBox4.Location = new Point(118, -1);
+            pictureBox4.Location = new Point(148, 1);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(654, 496);
+            pictureBox4.Size = new Size(594, 495);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 7;
             pictureBox4.TabStop = false;
@@ -107,17 +111,19 @@
             btnSpin.BackColor = Color.Transparent;
             btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
             btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSpin.Location = new Point(644, 207);
+            btnSpin.Location = new Point(675, 204);
             btnSpin.Name = "btnSpin";
             btnSpin.Size = new Size(82, 241);
             btnSpin.TabIndex = 8;
             btnSpin.TabStop = false;
-            btnSpin.Click += this.btnSpin_Click;
+            btnSpin.Click += btnSpin_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(942, 493);
             Controls.Add(btnSpin);
             Controls.Add(txtStake);
@@ -127,7 +133,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox4);
-            FormBorderStyle = FormBorderStyle.Fixed3D;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MinimizeBox = false;
             Name = "Form1";
             Text = "Form1";
@@ -148,8 +154,7 @@
         private Label lblBalance;
         private Label lblResult;
         private TextBox txtStake;
-        private PictureBox pictureBox4;
-        private Button btnSpin;
         private PictureBox btnSpin;
+        private PictureBox pictureBox4;
     }
 }
