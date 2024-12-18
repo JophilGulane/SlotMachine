@@ -111,9 +111,9 @@
             btnSpin.BackColor = Color.Transparent;
             btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
             btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSpin.Location = new Point(676, 215);
+            btnSpin.Location = new Point(689, 272);
             btnSpin.Name = "btnSpin";
-            btnSpin.Size = new Size(82, 241);
+            btnSpin.Size = new Size(53, 150);
             btnSpin.TabIndex = 8;
             btnSpin.TabStop = false;
             btnSpin.Click += btnSpin_Click;
