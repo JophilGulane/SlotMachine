@@ -32,61 +32,54 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             lblBalance = new Label();
-            btnSpin = new Button();
             lblResult = new Label();
             txtStake = new TextBox();
+            pictureBox4 = new PictureBox();
+            btnSpin = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)btnSpin).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(474, 200);
+            pictureBox1.Location = new Point(510, 192);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(125, 103);
+            pictureBox1.Size = new Size(86, 175);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(171, 200);
+            pictureBox2.Location = new Point(299, 192);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(125, 103);
+            pictureBox2.Size = new Size(89, 175);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(320, 200);
+            pictureBox3.Location = new Point(404, 192);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(125, 103);
+            pictureBox3.Size = new Size(91, 175);
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(645, 303);
+            lblBalance.Location = new Point(34, 113);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(50, 20);
             lblBalance.TabIndex = 3;
             lblBalance.Text = "label1";
             // 
-            // btnSpin
-            // 
-            btnSpin.Location = new Point(633, 109);
-            btnSpin.Name = "btnSpin";
-            btnSpin.Size = new Size(49, 179);
-            btnSpin.TabIndex = 4;
-            btnSpin.Text = "btnSpin";
-            btnSpin.UseVisualStyleBackColor = true;
-            btnSpin.Click += btnSpin_Click;
-            // 
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(355, 153);
+            lblResult.Location = new Point(676, 166);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(50, 20);
             lblResult.TabIndex = 5;
@@ -94,28 +87,55 @@
             // 
             // txtStake
             // 
-            txtStake.Location = new Point(645, 340);
+            txtStake.Location = new Point(12, 166);
             txtStake.Name = "txtStake";
-            txtStake.Size = new Size(125, 27);
+            txtStake.Size = new Size(85, 27);
             txtStake.TabIndex = 6;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackgroundImage = Assets.Assets.slot_machine4;
+            pictureBox4.Location = new Point(118, -1);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(654, 496);
+            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.TabIndex = 7;
+            pictureBox4.TabStop = false;
+            // 
+            // btnSpin
+            // 
+            btnSpin.BackColor = Color.Transparent;
+            btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
+            btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
+            btnSpin.Location = new Point(644, 207);
+            btnSpin.Name = "btnSpin";
+            btnSpin.Size = new Size(82, 241);
+            btnSpin.TabIndex = 8;
+            btnSpin.TabStop = false;
+            btnSpin.Click += this.btnSpin_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(942, 493);
+            Controls.Add(btnSpin);
             Controls.Add(txtStake);
             Controls.Add(lblResult);
-            Controls.Add(btnSpin);
             Controls.Add(lblBalance);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
+            Controls.Add(pictureBox4);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
+            MinimizeBox = false;
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)btnSpin).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -126,8 +146,10 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private Label lblBalance;
-        private Button btnSpin;
         private Label lblResult;
         private TextBox txtStake;
+        private PictureBox pictureBox4;
+        private Button btnSpin;
+        private PictureBox btnSpin;
     }
 }
