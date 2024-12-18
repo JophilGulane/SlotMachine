@@ -99,9 +99,9 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.BackgroundImage = Assets.Assets.slot_machine4;
-            pictureBox4.Location = new Point(148, 1);
+            pictureBox4.Location = new Point(148, 3);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(594, 495);
+            pictureBox4.Size = new Size(594, 493);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 7;
             pictureBox4.TabStop = false;
@@ -111,7 +111,7 @@
             btnSpin.BackColor = Color.Transparent;
             btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
             btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSpin.Location = new Point(675, 203);
+            btnSpin.Location = new Point(676, 215);
             btnSpin.Name = "btnSpin";
             btnSpin.Size = new Size(82, 241);
             btnSpin.TabIndex = 8;
