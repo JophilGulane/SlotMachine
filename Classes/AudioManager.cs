@@ -1,5 +1,6 @@
 ﻿using NAudio.Wave;
 using System;
+using System.Collections.Generic;
 
 namespace SlotMachine
 {
@@ -7,6 +8,7 @@ namespace SlotMachine
     {
         private WaveOutEvent backgroundMusicPlayer;
         private AudioFileReader backgroundAudioFile;
+        private List<WaveOutEvent> activeSoundEffects = new List<WaveOutEvent>();
 
         /// <summary>
         /// Plays the background music and allows volume control.
@@ -16,7 +18,7 @@ namespace SlotMachine
         {
             try
             {
-                StopBackgroundMusic(); // Ensure any currently playing music is stopped
+                StopBackgroundMusic();
 
                 backgroundAudioFile = new AudioFileReader(filePath);
                 backgroundMusicPlayer = new WaveOutEvent();
@@ -65,7 +67,7 @@ namespace SlotMachine
             {
                 if (backgroundAudioFile != null)
                 {
-                    backgroundAudioFile.Volume = Math.Clamp(volume, 0.0f, 1.0f); // Ensure volume is between 0.0 and 1.0
+                    backgroundAudioFile.Volume = Math.Clamp(volume, 0.0f, 1.0f);
                 }
             }
             catch (Exception ex)
@@ -83,12 +85,22 @@ namespace SlotMachine
             try
             {
                 var audioFile = new AudioFileReader(filePath);
-                using (var soundEffectPlayer = new WaveOutEvent())
+                var soundEffectPlayer = new WaveOutEvent();
+
+                // Initialize and play the sound
+                soundEffectPlayer.Init(audioFile);
+                soundEffectPlayer.Play();
+
+                // Add to active sound effects for cleanup after playback
+                activeSoundEffects.Add(soundEffectPlayer);
+
+                // Handle when playback stops
+                soundEffectPlayer.PlaybackStopped += (s, e) =>
                 {
-                    soundEffectPlayer.Init(audioFile);
-                    soundEffectPlayer.Play();
-                    soundEffectPlayer.PlaybackStopped += (s, e) => audioFile.Dispose(); // Dispose after playback
-                }
+                    soundEffectPlayer.Dispose();
+                    audioFile.Dispose();
+                    activeSoundEffects.Remove(soundEffectPlayer);
+                };
             }
             catch (Exception ex)
             {
