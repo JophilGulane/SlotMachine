@@ -48,32 +48,32 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(536, 238);
+            pictureBox1.Location = new Point(529, 191);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(82, 80);
+            pictureBox1.Size = new Size(92, 174);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(328, 238);
+            pictureBox2.Location = new Point(323, 191);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(85, 80);
+            pictureBox2.Size = new Size(94, 174);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(433, 238);
+            pictureBox3.Location = new Point(423, 191);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(81, 80);
+            pictureBox3.Size = new Size(100, 174);
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(47, 217);
+            lblBalance.Location = new Point(38, 137);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(50, 20);
             lblBalance.TabIndex = 3;
@@ -82,7 +82,7 @@
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(442, 152);
+            lblResult.Location = new Point(485, 97);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(50, 20);
             lblResult.TabIndex = 5;
@@ -90,7 +90,7 @@
             // 
             // txtStake
             // 
-            txtStake.Location = new Point(38, 258);
+            txtStake.Location = new Point(38, 215);
             txtStake.Name = "txtStake";
             txtStake.Size = new Size(85, 27);
             txtStake.TabIndex = 6;
@@ -111,7 +111,7 @@
             btnSpin.BackColor = Color.Transparent;
             btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
             btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSpin.Location = new Point(675, 204);
+            btnSpin.Location = new Point(675, 203);
             btnSpin.Name = "btnSpin";
             btnSpin.Size = new Size(82, 241);
             btnSpin.TabIndex = 8;
