@@ -7,6 +7,7 @@ namespace SlotMachine
     public partial class Form1 : Form
     {
         private Slot slotMachine;
+        private System.Windows.Forms.Timer timerSpin = new System.Windows.Forms.Timer();
 
         public Form1()
         {
@@ -46,6 +47,8 @@ namespace SlotMachine
 
                 btnSpin.Enabled = false; 	// Disable the button during spin
                 lblResult.Text = "";  	// Clear any previous result
+                timerSpin.Interval = 200; // Set the tick interval (in milliseconds)
+                timerSpin.Tick += timerSpin_Tick;
                 timerSpin.Start();
             }
             else
