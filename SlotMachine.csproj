@@ -39,4 +39,9 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\Animal\" />
+    <Folder Include="Assets\Numbers\" />
+  </ItemGroup>
+
 </Project>

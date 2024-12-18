@@ -14,7 +14,7 @@ namespace SlotMachine
             InitializeComponent();
             
             audioManager.PlayBackgroundMusic(@"SoundFX/tmpBG.mp3");
-            audioManager.SetBackgroundMusicVolume(0.25f);
+            audioManager.SetBackgroundMusicVolume(0.05f);
 
             // Initialize PictureBoxes for reels
             PictureBox[] pictureBoxes = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3 };
@@ -51,7 +51,7 @@ namespace SlotMachine
                 audioManager.PlaySoundEffect(@"SoundFX/tmpLever.mp3");
                 btnSpin.Enabled = false; 	// Disable the button during spin
                 lblResult.Text = "";  	// Clear any previous result
-                timerSpin.Interval = 200; // Set the tick interval (in milliseconds)
+                timerSpin.Interval = 1000; // Set the tick interval (in milliseconds)
                 timerSpin.Tick += timerSpin_Tick;
                 timerSpin.Start();
             }
