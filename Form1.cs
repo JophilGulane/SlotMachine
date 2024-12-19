@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using SlotMachine.Classes;
@@ -12,6 +13,7 @@ namespace SlotMachine
         AudioManager audioManager = new AudioManager();
         private System.Windows.Forms.Timer masterSpinTimer;
         private int spinCount;
+        public Reel[] Reels => Reels;
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +49,15 @@ namespace SlotMachine
 
         private void btnSpin_Click(object sender, EventArgs e)
         {
+            int stake;
+            if (!int.TryParse(txtStake.Text, out stake) || stake <= 0)
+            {
+                MessageBox.Show("Please enter a valid positive stake.");
+                return;
+            }
+
             spinCount = 20; // Number of cycles to spin
+            slotMachine.Stake = stake; // Ensure the stake is set here
             slotMachine.Spin();
 
             masterSpinTimer = new System.Windows.Forms.Timer { Interval = 100 };
@@ -59,11 +69,25 @@ namespace SlotMachine
                     masterSpinTimer.Stop();
                     slotMachine.StopSpin();
 
-                    int winnings = slotMachine.CheckResult();
+                    int winnings = slotMachine.CheckResult(); // Check the result after spins
+
+
+
                     lblResult.Text = winnings > 0
                         ? $"🎉 WIN! You earned P{winnings} 🎉"
                         : "No luck this time!";
                     lblBalance.Text = "Balance: P" + slotMachine.Balance;
+
+                    if (winnings > 0)
+                    {
+                        audioManager.PlaySoundEffect(@"SoundFX/tmpWinEffect.mp3");
+                        lblResult.ForeColor = Color.Green;
+
+                        // Update the balance after winning
+                        slotMachine.UpdateBalance(winnings); // Ensure winnings are added to balance
+                        lblBalance.Text = "Balance: P" + slotMachine.Balance;
+                        Debug.WriteLine($"Result: {winnings} - Balance: {slotMachine.Balance} - Stake: {slotMachine.Stake} - Symbols: {string.Join(", ", slotMachine.Reels.Select(r => r.Symbol?.ToString() ?? "null"))}");
+                    }
                 }
             };
             masterSpinTimer.Start();
@@ -71,18 +95,16 @@ namespace SlotMachine
 
         private void timerSpin_Tick(object sender, EventArgs e)
         {
-            slotMachine.Spin();			// Spin the reels
+            slotMachine.Spin();         // Spin the reels
             btnSpin.BackgroundImage = SlotMachine.Assets.Assets.slot_machine3;
 
-            if (DateTime.Now.Second % 2 == 0) 	// Stop spinning after 2 seconds
+            if (DateTime.Now.Second % 2 == 0)   // Stop spinning after 2 seconds
             {
                 btnSpin.BackgroundImage = SlotMachine.Assets.Assets.slot_machine2;
                 timerSpin.Stop();
                 btnSpin.Enabled = true;
 
-                int winnings = slotMachine.CheckResult();	// Check the result and update the UI accordingly
-
-                slotMachine.UpdateBalance(winnings);
+                int winnings = slotMachine.CheckResult();   // Check the result and update the UI accordingly
 
                 // Update the result label
                 if (winnings > 0)
@@ -96,7 +118,7 @@ namespace SlotMachine
                     lblResult.Text = "No luck this time!";
                     lblResult.ForeColor = Color.Red;
                 }
-
+                slotMachine.UpdateBalance(winnings);
                 lblBalance.Text = "Balance: P" + slotMachine.Balance;
                 txtStake.Clear();
             }
