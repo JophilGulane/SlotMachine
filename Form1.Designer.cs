@@ -48,26 +48,26 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(529, 237);
+            pictureBox1.Location = new Point(534, 237);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(92, 79);
+            pictureBox1.Size = new Size(82, 79);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-            pictureBox2.Location = new Point(323, 237);
+            pictureBox2.Location = new Point(328, 237);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(94, 79);
+            pictureBox2.Size = new Size(84, 79);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(423, 237);
+            pictureBox3.Location = new Point(437, 237);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(100, 79);
+            pictureBox3.Size = new Size(76, 79);
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
             // 
@@ -122,7 +122,6 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Fruits", "Animals", "Jewels", "Numbers" });
             comboBox1.Location = new Point(778, 43);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(125, 28);
