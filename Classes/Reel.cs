@@ -37,7 +37,6 @@ public class Reel
 
         theme = newTheme;
         pictureBox.BackColor = theme.BackgroundColor; // Set the background color for the PictureBox
-        Spin(); // Start spinning with the new theme
     }
     public Image Symbol
     {
