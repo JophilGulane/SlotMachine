@@ -48,7 +48,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(529, 237);
+            pictureBox1.Location = new Point(534, 237);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(92, 79);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -68,7 +68,7 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(423, 237);
+            pictureBox3.Location = new Point(437, 237);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(100, 79);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -126,7 +126,6 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Fruits", "Animals", "Jewels", "Numbers" });
             comboBox1.Location = new Point(778, 43);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(125, 28);
