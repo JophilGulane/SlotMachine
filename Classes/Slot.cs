@@ -1,5 +1,6 @@
 ﻿using SlotMachine.Classes;
 using System;
+using System.Diagnostics;
 using System.Linq;
 
 namespace SlotMachine.Models
@@ -9,7 +10,7 @@ namespace SlotMachine.Models
         private int balance;
         private int stake;
         private readonly Reel[] reels;
-
+        public Reel[] Reels => reels;
         public Slot(int initialBalance, Reel[] reels)
         {
             if (reels == null || reels.Length == 0)
@@ -32,8 +33,8 @@ namespace SlotMachine.Models
 
         public void Spin()
         {
-            if (stake > balance)
-                throw new InvalidOperationException("Stake cannot exceed current balance.");
+
+            Debug.WriteLine($"Spin called. Current balance: {balance}, Stake: {stake}");
 
             // Deduct stake before spinning
             Balance -= stake;
@@ -78,12 +79,20 @@ namespace SlotMachine.Models
             return 0; // No match
         }
 
+        // Helper method to compare symbols based on content
+        private bool IsSymbolsEqual(Image img1, Image img2)
+        {
+            if (img1 == null || img2 == null) return false;
+            return img1.Tag?.ToString() == img2.Tag?.ToString(); // Compare based on Tag or unique identifier
+        }
+
+
         public void UpdateBalance(int winnings)
         {
             if (winnings < 0)
                 throw new ArgumentOutOfRangeException(nameof(winnings), "Winnings cannot be negative.");
 
-            Balance += winnings;
+            Balance += winnings; // Add winnings to the balance
         }
     }
 }
