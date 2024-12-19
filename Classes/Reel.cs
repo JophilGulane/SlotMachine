@@ -1,47 +1,69 @@
-﻿using System;
+﻿using SlotMachine.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace SlotMachine.Models
 {
     public class Reel
     {
-        private string symbol;
+        private Image symbol;
         private readonly PictureBox pictureBox;
-        private readonly string[] symbols = { "🍒", "🍋", "🔔", "⭐", "🍇", "💎" };
+        private Theme theme;
         private readonly Random random = new Random();
+        private System.Windows.Forms.Timer spinTimer;
 
-        public Reel(PictureBox pictureBox)
+        public Reel(PictureBox pictureBox, Theme initialTheme)
         {
+            if (pictureBox == null) throw new ArgumentNullException(nameof(pictureBox), "PictureBox cannot be null.");
+            if (initialTheme == null) throw new ArgumentNullException(nameof(initialTheme), "Theme cannot be null.");
+
             this.pictureBox = pictureBox;
-            this.pictureBox.Paint += Reel_Paint;
-            this.Symbol = symbols[random.Next(symbols.Length)];
+            SetTheme(initialTheme); // Initialize with a valid theme
         }
 
-        public string Symbol
+        public Image Symbol
         {
             get => symbol;
-            set
+            private set
             {
                 symbol = value;
-                pictureBox.Invalidate(); // Trigger repaint to update the display
+                pictureBox.Image = symbol; // Update the PictureBox with the new symbol
             }
         }
 
-        private void Reel_Paint(object sender, PaintEventArgs e)
+        public void SetTheme(Theme newTheme)
         {
-            using (Font font = new Font("Segoe UI Emoji", 30, FontStyle.Bold))
-            {
-                e.Graphics.DrawString(symbol, font, Brushes.Black, new PointF(10, 10));
-            }
+            if (newTheme == null) throw new ArgumentNullException(nameof(newTheme), "Theme cannot be null.");
+
+            theme = newTheme;
+            pictureBox.BackColor = theme.BackgroundColor; // Set the background color for the PictureBox
+            Spin(); // Start spinning with the new theme
         }
 
         public void Spin()
         {
-            // Randomly select a symbol for the reel and update it
-            Symbol = symbols[random.Next(symbols.Length)];
+            if (spinTimer == null)
+            {
+                spinTimer = new System.Windows.Forms.Timer { Interval = 100 }; // Adjust interval for spinning speed
+                spinTimer.Tick += (s, e) =>
+                {
+                    if (theme.Symbols == null || theme.Symbols.Length == 0)
+                    {
+                        throw new InvalidOperationException("Theme's Symbols are not initialized or empty.");
+                    }
+
+                    Symbol = theme.Symbols[random.Next(theme.Symbols.Length)];
+                };
+            }
+
+            spinTimer.Start(); // Start the spinning animation
+        }
+
+        public void StopSpin()
+        {
+            spinTimer?.Stop(); // Stop the spinning animation
         }
     }
 }

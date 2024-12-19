@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SlotMachine.Classes;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SlotMachine.Models
 {
@@ -14,51 +12,77 @@ namespace SlotMachine.Models
 
         public Slot(int initialBalance, Reel[] reels)
         {
+            if (reels == null || reels.Length == 0)
+                throw new ArgumentException("Reels cannot be null or empty.", nameof(reels));
+
             this.balance = initialBalance;
             this.reels = reels;
         }
 
-        public int Balance
-        {
-            get { return balance; }
-            set { balance = value; }
-        }
-
+        public int Balance { get => balance; set => balance = value; }
         public int Stake
         {
-            get { return stake; }
-            set { stake = value; }
+            get => stake;
+            set
+            {
+                if (value < 0) throw new ArgumentOutOfRangeException(nameof(value), "Stake must be a positive number.");
+                stake = value;
+            }
         }
 
         public void Spin()
         {
-            // Spin each reel
+            if (stake > balance)
+                throw new InvalidOperationException("Stake cannot exceed current balance.");
+
+            // Deduct stake before spinning
+            Balance -= stake;
+
             foreach (var reel in reels)
             {
                 reel.Spin();
             }
         }
 
+        public void StopSpin()
+        {
+            foreach (var reel in reels)
+            {
+                reel.StopSpin();
+            }
+        }
+
+        public void SetTheme(Theme theme)
+        {
+            if (theme == null)
+                throw new ArgumentNullException(nameof(theme), "Theme cannot be null.");
+
+            foreach (var reel in reels)
+            {
+                reel.SetTheme(theme);
+            }
+        }
+
         public int CheckResult()
         {
-            int winnings = 0;
-
-            // Check if all three symbols are the same (Jackpot)
-            if (reels[0].Symbol == reels[1].Symbol && reels[1].Symbol == reels[2].Symbol)
+            if (reels.All(r => r.Symbol == reels[0].Symbol))
             {
-                winnings = stake * 10;  // Win 10x stake
-            }
-            // Check if two symbols match
-            else if (reels[0].Symbol == reels[1].Symbol || reels[1].Symbol == reels[2].Symbol || reels[0].Symbol == reels[2].Symbol)
-            {
-                winnings = stake * 2;  // Win 2x stake
+                return stake * 10; // Jackpot
             }
 
-            return winnings;
+            if (reels[0].Symbol == reels[1].Symbol || reels[1].Symbol == reels[2].Symbol || reels[0].Symbol == reels[2].Symbol)
+            {
+                return stake * 2; // Partial match
+            }
+
+            return 0; // No match
         }
 
         public void UpdateBalance(int winnings)
         {
+            if (winnings < 0)
+                throw new ArgumentOutOfRangeException(nameof(winnings), "Winnings cannot be negative.");
+
             Balance += winnings;
         }
     }

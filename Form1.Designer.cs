@@ -61,6 +61,7 @@
             pictureBox2.Size = new Size(94, 79);
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox3
             // 
@@ -121,11 +122,12 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "FRUITS", "ANIMALS", "JEWELS", "NUMBERS" });
+            comboBox1.Items.AddRange(new object[] { "Fruits", "Animals", "Jewels", "Numbers" });
             comboBox1.Location = new Point(778, 43);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(125, 28);
             comboBox1.TabIndex = 9;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // Form1
             // 
