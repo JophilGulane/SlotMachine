@@ -66,13 +66,21 @@ namespace SlotMachine.Models
 
         public int CheckResult()
         {
-            if (reels.All(r => r.Symbol == reels[0].Symbol))
+            if (this.reels[0].Symbol != null && this.reels[1].Symbol != null && this.reels[2].Symbol != null &&
+        IsSymbolsEqual(this.reels[0].Symbol, this.reels[1].Symbol) &&
+        IsSymbolsEqual(this.reels[1].Symbol, this.reels[2].Symbol))
             {
+                Debug.WriteLine("Jackpot detected!");
                 return stake * 10; // Jackpot
             }
 
-            if (reels[0].Symbol == reels[1].Symbol || reels[1].Symbol == reels[2].Symbol || reels[0].Symbol == reels[2].Symbol)
+            // Partial match: At least two reels have matching symbols
+            if (this.reels[0].Symbol != null && this.reels[1].Symbol != null &&
+                (IsSymbolsEqual(this.reels[0].Symbol, this.reels[1].Symbol) ||
+                 IsSymbolsEqual(this.reels[1].Symbol, this.reels[2].Symbol) ||
+                 IsSymbolsEqual(this.reels[0].Symbol, this.reels[2].Symbol)))
             {
+                Debug.WriteLine("Partial match detected!");
                 return stake * 2; // Partial match
             }
 
