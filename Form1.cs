@@ -1,127 +1,104 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using SlotMachine.Classes;
 using SlotMachine.Models;
+
 namespace SlotMachine
 {
     public partial class Form1 : Form
     {
         private Slot slotMachine;
-        private System.Windows.Forms.Timer timerSpin = new System.Windows.Forms.Timer();
-        AudioManager audioManager = new AudioManager();
         private System.Windows.Forms.Timer masterSpinTimer;
         private int spinCount;
-        public Reel[] Reels => Reels;
+        private readonly AudioManager audioManager = new AudioManager();
+
         public Form1()
         {
             InitializeComponent();
 
-            audioManager.PlayBackgroundMusic(@"SoundFX/tmpBG.mp3");
-            audioManager.SetBackgroundMusicVolume(0.05f);
-
-            // Initialize PictureBoxes for reels
-            PictureBox[] pictureBoxes = { pictureBox1, pictureBox2, pictureBox3 };
-            Reel[] reels = new Reel[pictureBoxes.Length];
-
-            // Default theme
-            Theme defaultTheme = new Theme_Fruits();
-            for (int i = 0; i < pictureBoxes.Length; i++)
-            {
-                reels[i] = new Reel(pictureBoxes[i], defaultTheme);
-            }
-
-
-            // Initialize SlotMachine object with initial balance of 1000
-            slotMachine = new Slot(1000, reels);
-
-            // Update the balance label on the form
-            lblBalance.Text = "Balance: P" + slotMachine.Balance;
-            comboBox1.Items.AddRange(new[] { "Fruits", "Animals", "Jewels", "Numbers" });
-            comboBox1.SelectedIndex = 0; // Default selection
+            InitializeAudio();
+            InitializeReelsAndSlotMachine();
+            InitializeUIComponents();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
 
+        private void InitializeAudio()
+        {
+            audioManager.PlayBackgroundMusic(@"SoundFX/tmpBG.mp3");
+            audioManager.SetBackgroundMusicVolume(0.05f);
+        }
+
+        private void InitializeReelsAndSlotMachine()
+        {
+            PictureBox[] pictureBoxes = { pictureBox1, pictureBox2, pictureBox3 };
+            Reel[] reels = pictureBoxes.Select(pb => new Reel(pb, new Theme_Fruits())).ToArray();
+            slotMachine = new Slot(1000, reels);
+            lblBalance.Text = $"Balance: P{slotMachine.Balance}";
+        }
+
+        private void InitializeUIComponents()
+        {
+            comboBox1.Items.AddRange(new[] { "Fruits", "Animals", "Jewels", "Numbers" });
+            comboBox1.SelectedIndex = 0;
+            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
         }
 
         private void btnSpin_Click(object sender, EventArgs e)
         {
-            int stake;
-            if (!int.TryParse(txtStake.Text, out stake) || stake <= 0)
+            if (!int.TryParse(txtStake.Text, out int stake) || stake <= 0)
             {
                 MessageBox.Show("Please enter a valid positive stake.");
                 return;
             }
 
-            spinCount = 20; // Number of cycles to spin
-            slotMachine.Stake = stake; // Ensure the stake is set here
+            StartSpin(stake);
+        }
+
+        private void StartSpin(int stake)
+        {
+            spinCount = 20;
+            slotMachine.Stake = stake;
             slotMachine.Spin();
 
             masterSpinTimer = new System.Windows.Forms.Timer { Interval = 100 };
-            masterSpinTimer.Tick += (s, ev) =>
-            {
-                spinCount--;
-                if (spinCount <= 0)
-                {
-                    masterSpinTimer.Stop();
-                    slotMachine.StopSpin();
-
-                    int winnings = slotMachine.CheckResult(); // Check the result after spins
-
-
-
-                    lblResult.Text = winnings > 0
-                        ? $"🎉 WIN! You earned P{winnings} 🎉"
-                        : "No luck this time!";
-                    lblBalance.Text = "Balance: P" + slotMachine.Balance;
-
-                    if (winnings > 0)
-                    {
-                        audioManager.PlaySoundEffect(@"SoundFX/tmpWinEffect.mp3");
-                        lblResult.ForeColor = Color.Green;
-
-                        // Update the balance after winning
-                        slotMachine.UpdateBalance(winnings); // Ensure winnings are added to balance
-                        lblBalance.Text = "Balance: P" + slotMachine.Balance;
-                        Debug.WriteLine($"Result: {winnings} - Balance: {slotMachine.Balance} - Stake: {slotMachine.Stake} - Symbols: {string.Join(", ", slotMachine.Reels.Select(r => r.Symbol?.ToString() ?? "null"))}");
-                    }
-                }
-            };
+            masterSpinTimer.Tick += MasterSpinTimer_Tick;
             masterSpinTimer.Start();
         }
 
-        private void timerSpin_Tick(object sender, EventArgs e)
+        private void MasterSpinTimer_Tick(object sender, EventArgs e)
         {
-            slotMachine.Spin();         // Spin the reels
-            btnSpin.BackgroundImage = SlotMachine.Assets.Assets.slot_machine3;
+            spinCount--;
+            if (spinCount > 0) return;
 
-            if (DateTime.Now.Second % 2 == 0)   // Stop spinning after 2 seconds
+            masterSpinTimer.Stop();
+            slotMachine.StopSpin();
+
+            int winnings = slotMachine.CheckResult();
+            UpdateUIAfterSpin(winnings);
+        }
+
+        private void UpdateUIAfterSpin(int winnings)
+        {
+            lblResult.Text = winnings > 0
+                ? $"🎉 WIN! You earned P{winnings} 🎉"
+                : "No luck this time!";
+
+            lblResult.ForeColor = winnings > 0 ? Color.Green : Color.Red;
+
+            if (winnings > 0)
             {
-                btnSpin.BackgroundImage = SlotMachine.Assets.Assets.slot_machine2;
-                timerSpin.Stop();
-                btnSpin.Enabled = true;
-
-                int winnings = slotMachine.CheckResult();   // Check the result and update the UI accordingly
-
-                // Update the result label
-                if (winnings > 0)
-                {
-                    lblResult.Text = "🎉 WIN! You earned P" + winnings + " 🎉";
-                    audioManager.PlaySoundEffect(@"SoundFX/tmpWinEffect.mp3");
-                    lblResult.ForeColor = Color.Green;
-                }
-                else
-                {
-                    lblResult.Text = "No luck this time!";
-                    lblResult.ForeColor = Color.Red;
-                }
+                audioManager.PlaySoundEffect(@"SoundFX/tmpWinEffect.mp3");
                 slotMachine.UpdateBalance(winnings);
-                lblBalance.Text = "Balance: P" + slotMachine.Balance;
-                txtStake.Clear();
             }
+
+            lblBalance.Text = $"Balance: P{slotMachine.Balance}";
+            txtStake.Clear();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -132,22 +109,22 @@ namespace SlotMachine
                 "Animals" => new Theme_Animal(),
                 "Jewels" => new Theme_Jewels(),
                 "Numbers" => new Theme_Numbers(),
-                _ => throw new InvalidOperationException("Invalid theme selection.") // Detect invalid state
+                _ => throw new InvalidOperationException("Invalid theme selection.")
             };
 
             slotMachine.SetTheme(selectedTheme);
             UpdateFormAppearance(selectedTheme);
         }
+
         private void UpdateFormAppearance(Theme theme)
         {
-            this.BackColor = theme.BackgroundColor;
+            BackColor = theme.BackgroundColor;
             lblBalance.ForeColor = theme.TextColor;
             lblResult.ForeColor = theme.TextColor;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

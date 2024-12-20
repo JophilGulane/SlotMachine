@@ -1,75 +1,61 @@
 ﻿using SlotMachine.Classes;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
-public class Reel
+namespace SlotMachine.Models
 {
-    public PictureBox PictureBox { get; }
-    public Theme Theme { get; set; }
-    private Image symbolImage;
-    private string symbolKey;
-    private readonly PictureBox pictureBox;
-    private Theme theme;
-    private readonly Random random = new Random();
-    private System.Windows.Forms.Timer spinTimer;
-
-    public Reel(PictureBox pictureBox, Theme initialTheme)
+    public class Reel
     {
-        if (pictureBox == null) throw new ArgumentNullException(nameof(pictureBox), "PictureBox cannot be null.");
-        if (initialTheme == null) throw new ArgumentNullException(nameof(initialTheme), "Theme cannot be null.");
+        private string symbolKey; // Stores the key from the Symbols dictionary
+        private readonly PictureBox pictureBox;
+        private readonly Random random = new Random();
+        private Theme theme;
 
-        this.pictureBox = pictureBox;
-        SetTheme(initialTheme); // Initialize with a valid theme
-    }
-
-    public string SymbolKey
-    {
-        get => symbolKey;
-        private set
+        public string SymbolKey
         {
-            symbolKey = value;
-            pictureBox.Image = symbolImage; // Update the PictureBox with the new symbol
-        }
-    }
-
-    public void SetTheme(Theme newTheme)
-    {
-        if (newTheme == null) throw new ArgumentNullException(nameof(newTheme), "Theme cannot be null.");
-
-        theme = newTheme;
-        pictureBox.BackColor = theme.BackgroundColor; // Set the background color for the PictureBox
-    }
-    public Image Symbol
-    {
-        get => symbolImage;
-        private set
-        {
-            symbolImage = value;
-            symbolKey = theme.Symbols.FirstOrDefault(s => s.Value == symbolImage).Key;
-
-        }
-    }
-    public void Spin()
-    {
-        if (spinTimer == null)
-        {
-            spinTimer = new System.Windows.Forms.Timer { Interval = 100 }; // Adjust interval for spinning speed
-            spinTimer.Tick += (s, e) =>
+            get => symbolKey;
+            private set
             {
-                if (theme.Symbols == null || theme.Symbols.Count == 0)
-                {
-                    throw new InvalidOperationException("Theme's Symbols are not initialized or empty.");
-                }
-
-                // Set random symbol
-                Symbol = theme.Symbols.ElementAt(random.Next(theme.Symbols.Count)).Value;
-            };
+                symbolKey = value;
+                pictureBox.Invalidate();
+            }
         }
 
-        spinTimer.Start(); // Start the spinning animation
-    }
+        public Reel(PictureBox pictureBox, Theme theme)
+        {
+            this.pictureBox = pictureBox;
+            this.theme = theme;
+            pictureBox.Paint += Reel_Paint;
+            Spin();
+        }
 
-    public void StopSpin()
-    {
-        spinTimer?.Stop(); // Stop the spinning animation
+        public void Spin()
+        {
+            var keys = new List<string>(theme.Symbols.Keys);
+            SymbolKey = keys[random.Next(keys.Count)];
+        }
+
+        public void StopSpin()
+        {
+            // Placeholder for logic to gracefully stop spinning animation
+        }
+
+        public void SetTheme(Theme newTheme)
+        {
+            theme = newTheme;
+            Spin(); // Reset to match the new theme
+        }
+
+        private void Reel_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(theme.BackgroundColor);
+
+            if (theme.Symbols.TryGetValue(SymbolKey, out Image symbolImage))
+            {
+                e.Graphics.DrawImage(symbolImage, new Rectangle(10, 10, 80, 80));
+            }
+        }
     }
 }

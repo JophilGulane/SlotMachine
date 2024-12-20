@@ -27,6 +27,13 @@
     <None Remove="Assets\Gems\tile073.png" />
     <None Remove="Assets\Gems\tile094.png" />
     <None Remove="Assets\Gems\tile163.png" />
+    <None Remove="Assets\Numbers\Number 1.png" />
+    <None Remove="Assets\Numbers\Number 2.png" />
+    <None Remove="Assets\Numbers\Number 3.png" />
+    <None Remove="Assets\Numbers\Number 4.png" />
+    <None Remove="Assets\Numbers\Number 5.png" />
+    <None Remove="Assets\Numbers\Number 6.png" />
+    <None Remove="Assets\Numbers\Number 7.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +75,27 @@
     </Content>
     <Content Include="Assets\Gems\tile163.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\Number 7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
@@ -119,27 +147,6 @@
 
   <ItemGroup>
     <None Update="Assets\Animal\07 crab.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 3.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 4.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 5.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 6.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Assets\Numbers\Number 7.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SoundFX\tmpBG.mp3">

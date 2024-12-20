@@ -10,33 +10,42 @@ namespace SlotMachine.Models
         private int balance;
         private int stake;
         private readonly Reel[] reels;
+
         public Reel[] Reels => reels;
+
         public Slot(int initialBalance, Reel[] reels)
         {
             if (reels == null || reels.Length == 0)
                 throw new ArgumentException("Reels cannot be null or empty.", nameof(reels));
 
-            this.balance = initialBalance;
+            balance = initialBalance;
             this.reels = reels;
         }
 
-        public int Balance { get => balance; set => balance = value; }
+        public int Balance
+        {
+            get => balance;
+            set => balance = value;
+        }
+
         public int Stake
         {
             get => stake;
             set
             {
-                if (value < 0) throw new ArgumentOutOfRangeException(nameof(value), "Stake must be a positive number.");
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(value), "Stake must be a positive number.");
                 stake = value;
             }
         }
 
         public void Spin()
         {
+            if (stake > balance)
+                throw new InvalidOperationException("Insufficient balance to place the stake.");
 
             Debug.WriteLine($"Spin called. Current balance: {balance}, Stake: {stake}");
 
-            // Deduct stake before spinning
             Balance -= stake;
 
             foreach (var reel in reels)
@@ -66,41 +75,38 @@ namespace SlotMachine.Models
 
         public int CheckResult()
         {
-            if (this.reels[0].Symbol != null && this.reels[1].Symbol != null && this.reels[2].Symbol != null &&
-        IsSymbolsEqual(this.reels[0].Symbol, this.reels[1].Symbol) &&
-        IsSymbolsEqual(this.reels[1].Symbol, this.reels[2].Symbol))
+            bool isJackpot = reels.All(r => r.SymbolKey == reels[0].SymbolKey);
+
+            if (isJackpot)
             {
                 Debug.WriteLine("Jackpot detected!");
-                return stake * 10; // Jackpot
+                return stake * 10;
             }
 
-            // Partial match: At least two reels have matching symbols
-            if (this.reels[0].Symbol != null && this.reels[1].Symbol != null &&
-                (IsSymbolsEqual(this.reels[0].Symbol, this.reels[1].Symbol) ||
-                 IsSymbolsEqual(this.reels[1].Symbol, this.reels[2].Symbol) ||
-                 IsSymbolsEqual(this.reels[0].Symbol, this.reels[2].Symbol)))
+            bool isPartialMatch = reels
+                .GroupBy(r => r.SymbolKey)
+                .Any(g => g.Count() > 1);
+
+            if (isPartialMatch)
             {
                 Debug.WriteLine("Partial match detected!");
-                return stake * 2; // Partial match
+                return stake * 2;
             }
 
-            return 0; // No match
+            return 0;
         }
 
-        // Helper method to compare symbols based on content
-        private bool IsSymbolsEqual(Image img1, Image img2)
+        private bool IsSymbolsEqual(string key1, string key2)
         {
-            if (img1 == null || img2 == null) return false;
-            return img1.Tag?.ToString() == img2.Tag?.ToString(); // Compare based on Tag or unique identifier
+            return key1 == key2; // Compare the keys directly
         }
-
 
         public void UpdateBalance(int winnings)
         {
             if (winnings < 0)
                 throw new ArgumentOutOfRangeException(nameof(winnings), "Winnings cannot be negative.");
 
-            Balance += winnings; // Add winnings to the balance
+            Balance += winnings;
         }
     }
 }
