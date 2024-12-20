@@ -48,9 +48,9 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(534, 237);
+            pictureBox1.Location = new Point(533, 227);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(92, 79);
+            pictureBox1.Size = new Size(85, 105);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -58,9 +58,9 @@
             // pictureBox2
             // 
             pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Location = new Point(323, 237);
+            pictureBox2.Location = new Point(328, 227);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(94, 79);
+            pictureBox2.Size = new Size(82, 105);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -68,9 +68,9 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(437, 237);
+            pictureBox3.Location = new Point(430, 227);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(100, 79);
+            pictureBox3.Size = new Size(85, 105);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
@@ -151,6 +151,7 @@
             MinimizeBox = false;
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

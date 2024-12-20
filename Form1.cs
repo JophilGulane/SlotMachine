@@ -56,7 +56,8 @@ namespace SlotMachine
                 MessageBox.Show("Please enter a valid positive stake.");
                 return;
             }
-
+            audioManager.PlaySoundEffect(@"SoundFX/hitech_slot.mp3");
+            btnSpin.BackgroundImage = Assets.Assets.slot_machine3;
             StartSpin(stake);
         }
 
@@ -82,6 +83,7 @@ namespace SlotMachine
             if (spinCount <= 0)
             {
                 masterSpinTimer.Stop();
+                btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
                 slotMachine.StopSpin();
 
                 int winnings = slotMachine.CheckResult();
@@ -131,6 +133,11 @@ namespace SlotMachine
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
