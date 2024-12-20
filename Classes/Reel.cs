@@ -1,47 +1,62 @@
-﻿using System;
+﻿using SlotMachine.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace SlotMachine.Models
 {
     public class Reel
     {
-        private string symbol;
+        private string symbolKey; // Stores the key from the Symbols dictionary
         private readonly PictureBox pictureBox;
-        private readonly string[] symbols = { "🍒", "🍋", "🔔", "⭐", "🍇", "💎" };
         private readonly Random random = new Random();
+        private Theme theme;
 
-        public Reel(PictureBox pictureBox)
+        public string SymbolKey
+        {
+            get => symbolKey;
+            private set
+            {
+                symbolKey = value;
+                pictureBox.Invalidate();
+            }
+        }
+
+        public Reel(PictureBox pictureBox, Theme theme)
         {
             this.pictureBox = pictureBox;
-            this.pictureBox.Paint += Reel_Paint;
-            this.Symbol = symbols[random.Next(symbols.Length)];
-        }
-
-        public string Symbol
-        {
-            get => symbol;
-            set
-            {
-                symbol = value;
-                pictureBox.Invalidate(); // Trigger repaint to update the display
-            }
-        }
-
-        private void Reel_Paint(object sender, PaintEventArgs e)
-        {
-            using (Font font = new Font("Segoe UI Emoji", 30, FontStyle.Bold))
-            {
-                e.Graphics.DrawString(symbol, font, Brushes.Black, new PointF(10, 10));
-            }
+            this.theme = theme;
+            pictureBox.Paint += Reel_Paint;
+            Spin();
         }
 
         public void Spin()
         {
-            // Randomly select a symbol for the reel and update it
-            Symbol = symbols[random.Next(symbols.Length)];
+            var keys = new List<string>(theme.Symbols.Keys);
+            SymbolKey = keys[random.Next(keys.Count)];
+        }
+
+        public void StopSpin()
+        {
+            // Placeholder for logic to gracefully stop spinning animation
+        }
+
+        public void SetTheme(Theme newTheme)
+        {
+            theme = newTheme;
+            Spin(); // Reset to match the new theme
+        }
+
+        private void Reel_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.Clear(theme.BackgroundColor);
+
+            // Display the current spinning symbol
+            if (theme.Symbols.TryGetValue(SymbolKey, out Image symbolImage))
+            {
+                e.Graphics.DrawImage(symbolImage, new Rectangle(10, 10, 80, 80));
+            }
         }
     }
 }
