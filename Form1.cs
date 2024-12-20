@@ -57,6 +57,7 @@ namespace SlotMachine
                 MessageBox.Show("Please enter a valid positive stake.");
                 return;
             }
+            audioManager.PlaySoundEffect(@"SoundFX/tmpLever.mp3");
             audioManager.PlaySoundEffect(@"SoundFX/hitech_slot.mp3");
             pictureBox4.BackgroundImage = Assets.Assets.soft;
             pictureBox4.Enabled = false;
