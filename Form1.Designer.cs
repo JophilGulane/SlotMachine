@@ -50,11 +50,11 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pictureBox1.Location = new Point(280, 232);
+            pictureBox1.Location = new Point(277, 231);
             pictureBox1.Margin = new Padding(30, 3, 3, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Padding = new Padding(30, 0, 0, 0);
-            pictureBox1.Size = new Size(82, 81);
+            pictureBox1.Size = new Size(82, 91);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
@@ -62,9 +62,9 @@
             // pictureBox2
             // 
             pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Location = new Point(75, 232);
+            pictureBox2.Location = new Point(72, 231);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(82, 81);
+            pictureBox2.Size = new Size(82, 91);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -72,9 +72,9 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(177, 232);
+            pictureBox3.Location = new Point(174, 231);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(82, 81);
+            pictureBox3.Size = new Size(82, 91);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
@@ -83,8 +83,10 @@
             // lblBalance
             // 
             lblBalance.AutoSize = true;
+            lblBalance.BackColor = Color.Transparent;
             lblBalance.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblBalance.Location = new Point(541, 176);
+            lblBalance.ForeColor = Color.White;
+            lblBalance.Location = new Point(542, 232);
             lblBalance.Name = "lblBalance";
             lblBalance.Size = new Size(95, 29);
             lblBalance.TabIndex = 3;
@@ -94,8 +96,10 @@
             // lblResult
             // 
             lblResult.AutoSize = true;
+            lblResult.BackColor = Color.Transparent;
             lblResult.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblResult.Location = new Point(542, 130);
+            lblResult.ForeColor = Color.White;
+            lblResult.Location = new Point(542, 203);
             lblResult.Name = "lblResult";
             lblResult.Size = new Size(131, 29);
             lblResult.TabIndex = 5;
@@ -105,7 +109,7 @@
             // txtStake
             // 
             txtStake.Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtStake.Location = new Point(668, 430);
+            txtStake.Location = new Point(542, 356);
             txtStake.Name = "txtStake";
             txtStake.Size = new Size(125, 26);
             txtStake.TabIndex = 6;
@@ -114,9 +118,9 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
-            pictureBox4.Location = new Point(1, 0);
+            pictureBox4.Location = new Point(-2, 0);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(507, 490);
+            pictureBox4.Size = new Size(507, 500);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 7;
             pictureBox4.TabStop = false;
@@ -126,7 +130,7 @@
             // 
             comboBox1.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(668, 276);
+            comboBox1.Location = new Point(763, 347);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(125, 37);
             comboBox1.TabIndex = 9;
@@ -135,8 +139,10 @@
             // lblStake
             // 
             lblStake.AutoSize = true;
+            lblStake.BackColor = Color.Transparent;
             lblStake.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblStake.Location = new Point(684, 398);
+            lblStake.ForeColor = SystemColors.Control;
+            lblStake.Location = new Point(562, 315);
             lblStake.Name = "lblStake";
             lblStake.Size = new Size(88, 29);
             lblStake.TabIndex = 10;
@@ -145,8 +151,10 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(684, 244);
+            label1.ForeColor = SystemColors.Control;
+            label1.Location = new Point(780, 315);
             label1.Name = "label1";
             label1.Size = new Size(95, 29);
             label1.TabIndex = 11;
@@ -156,6 +164,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Assets.Assets.background3;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(942, 493);
             Controls.Add(label1);
@@ -168,7 +177,8 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox4);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            DoubleBuffered = true;
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
             MinimizeBox = false;
             Name = "Form1";
             Text = "Form1";

@@ -20,6 +20,6 @@ namespace SlotMachine.Classes
             { "7", Image.FromFile("Assets/Numbers/07.png") }
         };
         public override Color BackgroundColor => Color.LightGray;
-        public override Color TextColor => Color.Black;
+        public override Color TextColor => Color.White;
     }
 }

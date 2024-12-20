@@ -18,6 +18,6 @@ namespace SlotMachine.Classes
             { "cat", Image.FromFile(@"Assets/Animal/06.png") }
         };
         public override Color BackgroundColor => Color.LightYellow;
-        public override Color TextColor => Color.DarkOrange;
+        public override Color TextColor => Color.White;
     }
 }

@@ -18,7 +18,7 @@ namespace SlotMachine.Classes
             { "tomato", Image.FromFile("Assets/Fruits/06.png") }
 
         };
-        public override Color BackgroundColor => Color.LightGreen;
-        public override Color TextColor => Color.DarkGreen;
+        public override Color BackgroundColor => Color.DarkRed;
+        public override Color TextColor => Color.White;
     }
 }

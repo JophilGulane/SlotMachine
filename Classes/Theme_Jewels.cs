@@ -18,6 +18,6 @@ namespace SlotMachine.Classes
             { "white", Image.FromFile("Assets/Gems/06.png") }
         };
         public override Color BackgroundColor => Color.LightBlue;
-        public override Color TextColor => Color.DarkBlue;
+        public override Color TextColor => Color.White;
     }
 }
