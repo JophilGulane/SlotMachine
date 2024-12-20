@@ -52,14 +52,11 @@
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(92, 79);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
-
-
             pictureBox2.BackgroundImageLayout = ImageLayout.None;
             pictureBox2.Location = new Point(323, 237);
             pictureBox2.Name = "pictureBox2";

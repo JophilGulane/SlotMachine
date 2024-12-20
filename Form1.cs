@@ -74,13 +74,19 @@ namespace SlotMachine
         private void MasterSpinTimer_Tick(object sender, EventArgs e)
         {
             spinCount--;
-            if (spinCount > 0) return;
+            foreach (var reel in slotMachine.Reels)
+            {
+                reel.Spin(); // Keep showing random results while spinning
+            }
 
-            masterSpinTimer.Stop();
-            slotMachine.StopSpin();
+            if (spinCount <= 0)
+            {
+                masterSpinTimer.Stop();
+                slotMachine.StopSpin();
 
-            int winnings = slotMachine.CheckResult();
-            UpdateUIAfterSpin(winnings);
+                int winnings = slotMachine.CheckResult();
+                UpdateUIAfterSpin(winnings);
+            }
         }
 
         private void UpdateUIAfterSpin(int winnings)

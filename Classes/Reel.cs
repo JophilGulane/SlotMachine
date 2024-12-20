@@ -52,6 +52,7 @@ namespace SlotMachine.Models
         {
             e.Graphics.Clear(theme.BackgroundColor);
 
+            // Display the current spinning symbol
             if (theme.Symbols.TryGetValue(SymbolKey, out Image symbolImage))
             {
                 e.Graphics.DrawImage(symbolImage, new Rectangle(10, 10, 80, 80));
