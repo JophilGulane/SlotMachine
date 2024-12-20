@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace SlotMachine.Classes
 {
-    public abstract class Theme1
+    public abstract class Theme
     {
         public abstract string[] SymbolPaths { get; }
         public abstract Font Font { get; }
         public abstract Brush Color { get; }
     }
-        public class FruitsTheme : Theme1
+        public class FruitsTheme : Theme
         {
             public override string[] SymbolPaths => new[]
             {
@@ -27,7 +27,7 @@ namespace SlotMachine.Classes
             public override Brush Color => Brushes.Black;
         }
 
-        public class AnimalsTheme : Theme1
+        public class AnimalsTheme : Theme
         {
             public override string[] SymbolPaths => new[]
             {
@@ -42,7 +42,7 @@ namespace SlotMachine.Classes
             public override Brush Color => Brushes.Black;
         }
 
-    public class Gems : Theme1
+    public class Gems : Theme
     {
         public override string[] SymbolPaths => new[]
         {
@@ -57,7 +57,7 @@ namespace SlotMachine.Classes
         public override Brush Color => Brushes.Black;
     }
 
-    public class Numbers : Theme1
+    public class Numbers : Theme
     {
         public override string[] SymbolPaths => new[]
         {

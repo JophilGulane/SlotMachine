@@ -45,6 +45,3 @@ namespace SlotMachine.Models
         }
     }
 }
-
-
-
