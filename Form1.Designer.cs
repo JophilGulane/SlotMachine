@@ -30,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -37,30 +38,33 @@
             lblResult = new Label();
             txtStake = new TextBox();
             pictureBox4 = new PictureBox();
-            btnSpin = new PictureBox();
             comboBox1 = new ComboBox();
+            lblStake = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)btnSpin).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(533, 227);
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox1.Location = new Point(280, 232);
+            pictureBox1.Margin = new Padding(30, 3, 3, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(85, 105);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.Padding = new Padding(30, 0, 0, 0);
+            pictureBox1.Size = new Size(82, 81);
+            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             pictureBox2.BackgroundImageLayout = ImageLayout.None;
-            pictureBox2.Location = new Point(328, 227);
+            pictureBox2.Location = new Point(75, 232);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(82, 105);
+            pictureBox2.Size = new Size(82, 81);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 1;
             pictureBox2.TabStop = false;
@@ -68,69 +72,85 @@
             // 
             // pictureBox3
             // 
-            pictureBox3.Location = new Point(430, 227);
+            pictureBox3.Location = new Point(177, 232);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(85, 105);
-            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox3.Size = new Size(82, 81);
+            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 2;
             pictureBox3.TabStop = false;
+            pictureBox3.Click += pictureBox3_Click;
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.Location = new Point(38, 137);
+            lblBalance.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblBalance.Location = new Point(541, 176);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(50, 20);
+            lblBalance.Size = new Size(95, 29);
             lblBalance.TabIndex = 3;
             lblBalance.Text = "label1";
+            lblBalance.Click += lblBalance_Click;
             // 
             // lblResult
             // 
             lblResult.AutoSize = true;
-            lblResult.Location = new Point(47, 73);
+            lblResult.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblResult.Location = new Point(542, 130);
             lblResult.Name = "lblResult";
-            lblResult.Size = new Size(50, 20);
+            lblResult.Size = new Size(131, 29);
             lblResult.TabIndex = 5;
-            lblResult.Text = "label2";
+            lblResult.Text = "WINNINGS";
+            lblResult.Click += lblResult_Click;
             // 
             // txtStake
             // 
-            txtStake.Location = new Point(28, 197);
+            txtStake.Font = new Font("Showcard Gothic", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtStake.Location = new Point(668, 430);
             txtStake.Name = "txtStake";
-            txtStake.Size = new Size(85, 27);
+            txtStake.Size = new Size(125, 26);
             txtStake.TabIndex = 6;
             // 
             // pictureBox4
             // 
             pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.BackgroundImage = Assets.Assets.slot_machine4;
-            pictureBox4.Location = new Point(148, 3);
+            pictureBox4.BackgroundImage = (Image)resources.GetObject("pictureBox4.BackgroundImage");
+            pictureBox4.Location = new Point(1, 0);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(594, 493);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox4.Size = new Size(507, 490);
+            pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 7;
             pictureBox4.TabStop = false;
-            // 
-            // btnSpin
-            // 
-            btnSpin.BackColor = Color.Transparent;
-            btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
-            btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
-            btnSpin.Location = new Point(689, 272);
-            btnSpin.Name = "btnSpin";
-            btnSpin.Size = new Size(53, 150);
-            btnSpin.TabIndex = 8;
-            btnSpin.TabStop = false;
-            btnSpin.Click += btnSpin_Click;
+            pictureBox4.Click += btnSpin_Click;
             // 
             // comboBox1
             // 
+            comboBox1.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(778, 43);
+            comboBox1.Location = new Point(668, 276);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(125, 28);
+            comboBox1.Size = new Size(125, 37);
             comboBox1.TabIndex = 9;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // lblStake
+            // 
+            lblStake.AutoSize = true;
+            lblStake.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStake.Location = new Point(684, 398);
+            lblStake.Name = "lblStake";
+            lblStake.Size = new Size(88, 29);
+            lblStake.TabIndex = 10;
+            lblStake.Text = "Stake";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Showcard Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(684, 244);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 29);
+            label1.TabIndex = 11;
+            label1.Text = "theme";
             // 
             // Form1
             // 
@@ -138,8 +158,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(942, 493);
+            Controls.Add(label1);
+            Controls.Add(lblStake);
             Controls.Add(comboBox1);
-            Controls.Add(btnSpin);
             Controls.Add(txtStake);
             Controls.Add(lblResult);
             Controls.Add(lblBalance);
@@ -156,7 +177,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)btnSpin).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -169,8 +189,9 @@
         private Label lblBalance;
         private Label lblResult;
         private TextBox txtStake;
-        private PictureBox btnSpin;
         private PictureBox pictureBox4;
         private ComboBox comboBox1;
+        private Label lblStake;
+        private Label label1;
     }
 }

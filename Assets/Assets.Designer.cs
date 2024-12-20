@@ -22,7 +22,7 @@ namespace SlotMachine.Assets {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Assets {
+    public class Assets {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace SlotMachine.Assets {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SlotMachine.Assets.Assets", typeof(Assets).Assembly);
@@ -51,7 +51,7 @@ namespace SlotMachine.Assets {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,9 +63,9 @@ namespace SlotMachine.Assets {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _01 {
+        public static System.Drawing.Bitmap hard {
             get {
-                object obj = ResourceManager.GetObject("_01", resourceCulture);
+                object obj = ResourceManager.GetObject("hard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace SlotMachine.Assets {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _02 {
+        public static System.Drawing.Bitmap off {
             get {
-                object obj = ResourceManager.GetObject("_02", resourceCulture);
+                object obj = ResourceManager.GetObject("off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace SlotMachine.Assets {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _03 {
+        public static System.Drawing.Bitmap on {
             get {
-                object obj = ResourceManager.GetObject("_03", resourceCulture);
+                object obj = ResourceManager.GetObject("on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,69 +93,9 @@ namespace SlotMachine.Assets {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _04 {
+        public static System.Drawing.Bitmap soft {
             get {
-                object obj = ResourceManager.GetObject("_04", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _05 {
-            get {
-                object obj = ResourceManager.GetObject("_05", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _06 {
-            get {
-                object obj = ResourceManager.GetObject("_06", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap slot_machine2 {
-            get {
-                object obj = ResourceManager.GetObject("slot_machine2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap slot_machine3 {
-            get {
-                object obj = ResourceManager.GetObject("slot_machine3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap slot_machine4 {
-            get {
-                object obj = ResourceManager.GetObject("slot-machine4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap slot_machine5 {
-            get {
-                object obj = ResourceManager.GetObject("slot_machine5", resourceCulture);
+                object obj = ResourceManager.GetObject("soft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using SlotMachine.Classes;
 using SlotMachine.Models;
+using SlotMachine.Assets;
 
 namespace SlotMachine
 {
@@ -18,7 +19,7 @@ namespace SlotMachine
         public Form1()
         {
             InitializeComponent();
-
+            pictureBox4.BackgroundImage = Assets.Assets.hard;
             InitializeAudio();
             InitializeReelsAndSlotMachine();
             InitializeUIComponents();
@@ -57,13 +58,14 @@ namespace SlotMachine
                 return;
             }
             audioManager.PlaySoundEffect(@"SoundFX/hitech_slot.mp3");
-            btnSpin.BackgroundImage = Assets.Assets.slot_machine3;
+            pictureBox4.BackgroundImage = Assets.Assets.soft;
+            pictureBox4.Enabled = false;
             StartSpin(stake);
         }
 
         private void StartSpin(int stake)
         {
-            spinCount = 20;
+            spinCount = 40;
             slotMachine.Stake = stake;
             slotMachine.Spin();
 
@@ -83,7 +85,8 @@ namespace SlotMachine
             if (spinCount <= 0)
             {
                 masterSpinTimer.Stop();
-                btnSpin.BackgroundImage = Assets.Assets.slot_machine2;
+                pictureBox4.Enabled = true;
+                pictureBox4.BackgroundImage = Assets.Assets.hard;
                 slotMachine.StopSpin();
 
                 int winnings = slotMachine.CheckResult();
@@ -136,6 +139,21 @@ namespace SlotMachine
         }
 
         private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblBalance_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblResult_Click(object sender, EventArgs e)
         {
 
         }

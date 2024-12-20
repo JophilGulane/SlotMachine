@@ -10,23 +10,43 @@
 
   <ItemGroup>
     <None Remove="Assets\Animal\01 chicken.png" />
+    <None Remove="Assets\Animal\01.png" />
     <None Remove="Assets\Animal\02 pig.png" />
+    <None Remove="Assets\Animal\02.png" />
     <None Remove="Assets\Animal\03 sheep.png" />
+    <None Remove="Assets\Animal\03.png" />
     <None Remove="Assets\Animal\04 turtle.png" />
+    <None Remove="Assets\Animal\04.png" />
     <None Remove="Assets\Animal\05 wolf.png" />
+    <None Remove="Assets\Animal\05.png" />
     <None Remove="Assets\Animal\06 cat.png" />
+    <None Remove="Assets\Animal\06.png" />
+    <None Remove="Assets\Animal\07.png" />
     <None Remove="Assets\Fruits\01.png" />
     <None Remove="Assets\Fruits\02.png" />
     <None Remove="Assets\Fruits\03.png" />
     <None Remove="Assets\Fruits\04.png" />
     <None Remove="Assets\Fruits\05.png" />
     <None Remove="Assets\Fruits\06.png" />
+    <None Remove="Assets\Gems\01.png" />
+    <None Remove="Assets\Gems\02.png" />
+    <None Remove="Assets\Gems\03.png" />
+    <None Remove="Assets\Gems\04.png" />
+    <None Remove="Assets\Gems\05.png" />
+    <None Remove="Assets\Gems\06.png" />
     <None Remove="Assets\Gems\tile008.png" />
     <None Remove="Assets\Gems\tile036.png" />
     <None Remove="Assets\Gems\tile053.png" />
     <None Remove="Assets\Gems\tile073.png" />
     <None Remove="Assets\Gems\tile094.png" />
     <None Remove="Assets\Gems\tile163.png" />
+    <None Remove="Assets\Numbers\01.png" />
+    <None Remove="Assets\Numbers\02.png" />
+    <None Remove="Assets\Numbers\03.png" />
+    <None Remove="Assets\Numbers\04.png" />
+    <None Remove="Assets\Numbers\05.png" />
+    <None Remove="Assets\Numbers\06.png" />
+    <None Remove="Assets\Numbers\07.png" />
     <None Remove="Assets\Numbers\Number 1.png" />
     <None Remove="Assets\Numbers\Number 2.png" />
     <None Remove="Assets\Numbers\Number 3.png" />
@@ -37,7 +57,70 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Gems\02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Animal\01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Animal\02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Animal\03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Animal\04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Animal\05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Animal\06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Animal\07.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Fruits\06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gems\01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gems\03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gems\04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gems\05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Gems\06.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\01.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\02.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\03.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\04.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\05.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Numbers\06.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -79,7 +162,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Assets\Assets.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Assets.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
@@ -90,6 +173,9 @@
 
   <ItemGroup>
     <None Update="Assets\Animal\07 crab.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SoundFX\hitech_slot.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="SoundFX\tmpBG.mp3">
